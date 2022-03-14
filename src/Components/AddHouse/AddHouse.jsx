@@ -1,34 +1,55 @@
+import { useState } from "react";
+
+
 export const AddHouse = () => {
+
+  const [formData,setFormData]=useState({});
+  const [data,setData]=useState([]);
+
+  const handleChange=(e)=>{
+    
+    let {className,value,checked,type}=e.target;
+    value=type ==="cheackbox"?checked:value
+    setFormData({...formData,
+    [className]:value})
+  }
+  const handleSubmit=(e)=>{
+    e.preventDefault()
+    // console.log(formData)
+  
+  }
+  
+  
   return (
     <div className="addHouseContainer">
-      <form>
+      <form onSubmit={handleSubmit}>
         <label>name</label>
-        <input type="text" className="name" value={""} required />
+        <input onChange={handleChange} type="text" name="name" className="name"  required />
         <br />
         <label>ownerName</label>
-        <input value={""} type="text" className="ownerName" required />
+        <input onChange={handleChange}   type="text" name="Ownersname" className="ownerName" required />
         <br />
         <label>address</label>
-        <input value={""} type="text" className="address" required />
+        <input onChange={handleChange}   type="text" name="Address" className="address" required />
         <br />
         <label>areaCode</label>
-        <input value={""} type="text" className="areaCode" required />
+        <input onChange={handleChange}   type="text" name="Areacode" className="areaCode" required />
         <br />
         <label>rent</label>
-        <input value={""} type="text" className="rent" required />
+        <input onChange={handleChange}  type="text" name="rent" className="rent" required />
         <br />
         <label>preferredTenant</label>
         <br />
         <label>bachelor</label>
-        <input checked={""} type="checkbox" className="bachelor" />
+        <input onChange={handleChange}  name="preferredtenants" type="checkbox" className="bachelor" />
         <br />
         <label>married</label>
-        <input checked={""} type="checkbox" className="married" />
+        <input checked={""} name="preferredtenants" type="checkbox" className="married" />
         <br />
         <label>image</label>
-        <input value={""} type="text" className="image" required />
+        <input onChange={handleChange}   name="image" type="text" className="image" required />
         <br />
-        <input className="submitBtn" type="submit" />
+        <input onChange={handleChange}  className="submitBtn" type="submit" />
       </form>
     </div>
   );
