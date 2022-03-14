@@ -15,8 +15,16 @@ export const AddHouse = () => {
   }
   const handleSubmit=(e)=>{
     e.preventDefault()
-    // console.log(formData)
-  
+    console.log(formData)
+    axios.post('http://localhost:8080/houses', formData)
+    .then(function (response) {
+      console.log(response);
+    })
+    
+
+    .catch(function (error) {
+      console.log(error);
+    });
   }
   
   
